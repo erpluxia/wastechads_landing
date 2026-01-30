@@ -5,22 +5,38 @@
     justify-content: center;
     text-align: center;
     padding: 0 5%;
-    background: radial-gradient(circle at center, rgba(36, 36, 36, 0.8) 0%, #1a1a1a 100%);
+    background: #0f0f0f;
     position: relative;
     overflow: hidden;
+    perspective: 1000px;
 }
 
-.hero::before {
-    content: '';
+.hero-bg-accent {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 60%);
-    animation: rotate 20s linear infinite;
-    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    transform: translate(-50%, -50%);
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
     pointer-events: none;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    filter: blur(50px);
 }
 
 .hero-content {
@@ -43,6 +59,30 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: #ffffff;
+    width: 3px;
+    height: 1em;
+    animation: blink 1s infinite;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .hero-buttons {
@@ -76,16 +116,6 @@
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 @media (max-width: 768px) {
